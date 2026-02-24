@@ -117,8 +117,9 @@ Ba chiến lược huấn luyện được thực nghiệm để đánh giá t�
 Khả năng nhận diện của mô hình tốt nhất (Fine-tune Full Model) trên các mẫu ảnh thực tế phức tạp.
 
 <p align="center">
-  <img src="images/slide5.png" width="45%" alt="Prediction Samples">
-  <img src="images/mukbang.png" width="45%" alt="Complex Scene Prediction">
+  <img src="images/slide5.png" width="80%" alt="Prediction Samples">
+  <br><br>
+  <img src="images/mukbang.png" width="80%" alt="Complex Scene Prediction">
   <br><i>Hình 3: Kết quả dự đoán trên ảnh đơn và ảnh thực tế phức tạp (Mukbang)</i>
 </p>
 
