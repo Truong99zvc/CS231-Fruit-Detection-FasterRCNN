@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://www.uit.edu.vn/" title="Trường Đại học Công nghệ Thông tin" style="border: 5;">
-    <img src="https://i.imgur.com/WmMnSRt.png" alt="Trường Đại học Công nghệ Thông tin | University of Information Technology">
+  <a href="https://www.uit.edu.vn/" title="University of Information Technology">
+    <img src="https://i.imgur.com/WmMnSRt.png" alt="University of Information Technology">
   </a>
 </p>
 
-<h1 align="center"><b>CS231.P22 - NHẬP MÔN THỊ GIÁC MÁY TÍNH</b></h1>
+<h1 align="center"><b>CS231.P22 - Introduction to Computer Vision</b></h1>
 
 <p align="center">
     <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.x-EE4C2C.svg?style=flat-square" alt="PyTorch"></a>
@@ -12,123 +12,147 @@
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Research%20Only-blue.svg?style=flat-square" alt="License"></a>
 </p>
 
-## MỤC LỤC
-* [Giới thiệu môn học](#gioi-thieu-mon-hoc)
-* [Giảng viên hướng dẫn](#giang-vien-huong-dan)
-* [Sinh viên thực hiện](#sinh-vien-thuc-hien)
-* [Đồ án](#do-an)
-* [Kiến trúc mô hình](#kien-truc-mo-hinh)
-* [Dữ liệu](#du-lieu)
-* [Chiến lược huấn luyện](#chien-luoc-huan-luyen)
-* [Kết quả thực nghiệm](#ket-qua-thuc-nghiem)
-* [Demo](#demo)
-* [Kaggle Notebook](#kaggle-notebook)
-* [Tham khảo](#tham-khao)
+## Table of Contents
+- [Course overview](#course-overview)
+- [Instructor](#instructor)
+- [Student](#student)
+- [Project](#project)
+- [Model architecture](#model-architecture)
+- [Dataset](#dataset)
+- [Training strategies](#training-strategies)
+- [Experimental results](#experimental-results)
+- [Demo](#demo)
+- [Kaggle notebook](#kaggle-notebook)
+- [References](#references)
 
-## GIỚI THIỆU MÔN HỌC
-<a name="gioi-thieu-mon-hoc"></a>
-* **Tên môn học**: Nhập môn Thị giác máy tính
-* **Mã môn học**: CS231
-* **Mã lớp**: CS231.P22
-* **Năm học**: Học kỳ 2, 2024 - 2025
+## Course overview
+<a name="course-overview"></a>
+- **Course name**: Introduction to Computer Vision
+- **Course code**: CS231
+- **Class code**: CS231.P22
+- **Academic year**: Semester 2, 2024 - 2025
 
-## GIẢNG VIÊN HƯỚNG DẪN
-<a name="giang-vien-huong-dan"></a>
-* **TS. Mai Tiến Dũng** - *dungmt@uit.edu.vn*
+## Instructor
+<a name="instructor"></a>
+- **Dr. Mai Tien Dung** - dungmt@uit.edu.vn
 
-## SINH VIÊN THỰC HIỆN
-<a name="sinh-vien-thuc-hien"></a>
-| MSSV | Họ và tên | Github | Email |
-|:----------:|:-------------------:|:----------------------------------------------------:|:-----------------------:|
-| 22521587 | Trương Phúc Trường | [Truong99zvc](https://github.com/Truong99zvc/) | 22521587@gm.uit.edu.vn |
+## Student
+<a name="student"></a>
+| ID | Name | GitHub | Email |
+|:---:|:-------------------:|:----------------------------------------------------:|:-----------------------:|
+| 22521587 | Truong Phuc Truong | [Truong99zvc](https://github.com/Truong99zvc/) | 22521587@gm.uit.edu.vn |
 
-## ĐỒ ÁN
-<a name="do-an"></a>
-**Tên đồ án**: NHẬN DIỆN VÀ PHÂN LOẠI MỘT SỐ LOẠI TRÁI CÂY
+## Project
+<a name="project"></a>
+Title: Fruit Detection and Classification — Implementing Faster R-CNN
 
-Đồ án tập trung nghiên cứu và triển khai mô hình **Faster R-CNN**. Quá trình thực hiện bao gồm:
-* Tiền xử lý dữ liệu và chuyển đổi định dạng nhãn.
-* Xây dựng và tùy chỉnh kiến trúc mô hình với các chiến lược Transfer Learning khác nhau.
-* Đánh giá hiệu suất mô hình qua các độ đo mAP, AR và mIoU.
+This project implements and evaluates a Faster R-CNN detector for 11 fruit categories. Main tasks include:
+- Data preprocessing and label conversion (YOLO -> COCO)
+- Model building and experimentation with transfer learning strategies
+- Evaluation using mAP, AR and mean IoU metrics
 
-## KIẾN TRÚC MÔ HÌNH
-<a name="kien-truc-mo-hinh"></a>
-Sử dụng kiến trúc **Faster R-CNN** với backbone **ResNet50-FPN**. Đây là kiến trúc Object Detection hai giai đoạn (two-stage detector) mạnh mẽ.
+## Model architecture
+<a name="model-architecture"></a>
+We use Faster R-CNN with a ResNet-50 FPN backbone (two-stage detector).
 
 <p align="center">
   <a href="https://medium.com/@RobuRishabh/understanding-and-implementing-faster-r-cnn-248f7b25ff96">
     <img src="images/faster_rcnn_architecture.png" width="750" alt="Faster R-CNN Architecture">
   </a>
-  <br><i>Hình 1: Kiến trúc tổng quan của mô hình Faster R-CNN</i>
+  <br><i>Figure 1: Faster R-CNN overview</i>
 </p>
 
-## DỮ LIỆU
-<a name="du-lieu"></a>
-### Nguồn dữ liệu
-Sử dụng bộ dữ liệu **Fruit Object Detection** từ [Kaggle/Dataset Ninja](https://datasetninja.com/fruit-object-detection). Bao gồm 11 loại trái cây: táo, quýt, lê, dưa hấu, sầu riêng, chanh, nho, dứa, thanh long, dưa lê Hàn Quốc và dưa lưới.
+## Dataset
+<a name="dataset"></a>
+Dataset: Fruit Object Detection (from Kaggle / Dataset Ninja). The dataset contains 11 classes: apple, tangerine, pear, watermelon, durian, lemon, grape, pineapple, dragon fruit, korean melon, cantaloupe.
 
-### Cấu trúc thư mục (COCO Format)
-Dữ liệu gốc được chuyển đổi từ định dạng YOLO sang định dạng COCO để tương thích với thư viện `torchvision`.
+Directory structure (COCO format):
 
 ```text
 dataset/
 ├── train/
-│   ├── images/                # 3076 ảnh huấn luyện
-│   └── train_annotations.json # Nhãn định dạng COCO
+│   ├── images/
+│   └── train_annotations.json
 ├── validation/
-│   ├── images/                # 769 ảnh kiểm tra (20% train)
+│   ├── images/
 │   └── validation_annotations.json
 └── test/
-    ├── images/                # 640 ảnh đánh giá độc lập
+    ├── images/
     └── test_annotations.json
 ```
 
-## CHIẾN LƯỢC HUẤN LUYỆN
-<a name="chien-luoc-huan-luyen"></a>
-Ba chiến lược huấn luyện được thực nghiệm để đánh giá tầm quan trọng của Học chuyển giao (Transfer Learning):
+The dataset used in this project was converted from YOLO format to COCO format for compatibility with `torchvision` utilities.
 
-1. **Train from Scratch**: Khởi tạo trọng số ngẫu nhiên, không sử dụng kiến thức tiền huấn luyện (`weights=None`, `weights_backbone=None`).
-2. **Pre-trained Backbone**: Chỉ sử dụng backbone ResNet50 đã huấn luyện trên ImageNet (`weights_backbone=DEFAULT`), các lớp khác khởi tạo ngẫu nhiên.
-3. **Fine-tune Full Model**: Load toàn bộ trọng số Faster R-CNN đã huấn luyện trên COCO (`weights='DEFAULT'`) và tinh chỉnh lớp phân loại cuối.
+## Training strategies
+<a name="training-strategies"></a>
+We experimented with three training strategies to measure transfer learning effects:
 
-**Thông số cấu hình chung:**
-* **Python**: 3.13 (Kaggle Environment).
-* **Optimizer**: Adam (`lr=1e-4`, `weight_decay=5e-4`).
-* **Scheduler**: StepLR (`step_size=7`, `gamma=0.1`).
+1. Train from Scratch: random initialization (no pretrained weights).
+2. Pretrained Backbone: use ImageNet-pretrained backbone, randomly initialize other parts.
+3. Fine-tune Full Model: initialize with pretrained Faster R-CNN weights and fine-tune the whole network.
 
-## KẾT QUẢ THỰC NGHIỆM
-<a name="ket-qua-thuc-nghiem"></a>
+Common configuration:
+- Python 3.13
+- Optimizer: Adam (lr=1e-4, weight_decay=5e-4)
+- Scheduler: StepLR (step_size=7, gamma=0.1)
 
-| Chiến lược | Kết quả (mAP@[.5:.95]) | Kaggle Version | Biểu đồ kết quả |
-|:---|:---:|:---:|:---:|
-| Train từ đầu | 0.0478 | V1 | images/v1.png |
-| Backbone Pre-trained | 0.6851 | V5 | images/v5.png |
-| Fine-tune Toàn bộ | 0.7034 | V2 | images/v2.png |
+## Experimental results
+<a name="experimental-results"></a>
+
+| Strategy | mAP@[.5:.95] | Notes | Result image |
+|:---|:---:|:---|:---|
+| Train from Scratch | 0.0478 | V1 | images/v1.png |
+| Backbone Pretrained | 0.6851 | V5 | images/v5.png |
+| Fine-tune Full Model | 0.7034 | V2 | images/v2.png |
 
 <p align="center">
   <img src="images/v1.png" width="32%" alt="Scratch Loss">
   <img src="images/v5.png" width="32%" alt="Backbone Loss">
   <img src="images/v2.png" width="32%" alt="Finetune Loss">
-  <br><i>Hình 2: So sánh biểu đồ Loss và mAP của 3 chiến lược thực nghiệm (V1, V5, V2)</i>
+  <br><i>Figure 2: Loss and mAP comparison for three strategies (V1, V5, V2)</i>
 </p>
 
-## DEMO
+## Demo
 <a name="demo"></a>
-Khả năng nhận diện của mô hình tốt nhất (Fine-tune Full Model) trên các mẫu ảnh thực tế phức tạp.
+This repository now contains a Streamlit demo app that lets you load any of the three trained models and run inference on uploaded images.
 
-<p align="center">
-  <img src="images/slide5.png" width="80%" alt="Prediction Samples">
-  <br><br>
-  <img src="images/mukbang.png" width="80%" alt="Complex Scene Prediction">
-  <br><i>Hình 3: Kết quả dự đoán trên ảnh đơn và ảnh thực tế phức tạp (Mukbang)</i>
-</p>
+- Demo folder: [demo_streamlit](demo_streamlit)
+- Demo entrypoint: [demo_streamlit/app.py](demo_streamlit/app.py)
+- Demo dependencies: [demo_streamlit/requirements.txt](demo_streamlit/requirements.txt)
 
-## KAGGLE NOTEBOOK
+Provided model links (Google Drive). You can either let the Streamlit app attempt to download them automatically (requires `gdown`), or download and place them under `demo_streamlit/models` with the filenames shown below.
+
+Model files and suggested filenames:
+
+- Train from Scratch — suggested filename: `model_scratch.pth`
+  - https://drive.google.com/file/d/1sEtlFPUAjM2UgbUL3imPw6tdHGrgq9AW/view?usp=sharing
+- Backbone Pretrained — suggested filename: `model_backbone_pretrained.pth`
+  - https://drive.google.com/file/d/1_EX4m02uwZn7SQhNMLPUFqsOxStV1ZZI/view?usp=sharing
+- Fine-tune Full Model — suggested filename: `model_finetune_full.pth`
+  - https://drive.google.com/file/d/1K2g9D4mpMKO_RICzXzTWCRAPbSNxi-rg/view?usp=sharing
+
+Note: After I add these example filenames to the README, you said you'll rename your uploaded Drive files accordingly — that will make the demo's auto-download and the app easier to use.
+
+How to run the demo locally (example):
+
+```bash
+# create a venv, install dependencies
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+pip install -r demo_streamlit/requirements.txt
+
+# run the streamlit app
+streamlit run demo_streamlit/app.py
+```
+
+If automatic download with `gdown` fails, download each model manually from the Drive links above and place them in `demo_streamlit/models` with the exact suggested filenames.
+
+## Kaggle notebook
 <a name="kaggle-notebook"></a>
-Mã nguồn chi tiết và quá trình huấn luyện có thể truy cập tại:
+Full training and experiment code is available at:
 > [CS231 - Faster R-CNN from Pytorch](https://www.kaggle.com/code/gtekx9/cs231-faster-rcnn-from-pytorch)
 
-## THAM KHẢO
-<a name="tham-khao"></a>
-* [1] Shaoqing Ren et al., "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks," 2015.
-* [2] Thư viện PyTorch `torchvision.models.detection`.
+## References
+<a name="references"></a>
+* Shaoqing Ren et al., "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks," 2015.
+* PyTorch `torchvision.models.detection` documentation.
