@@ -51,6 +51,30 @@ This project implements and evaluates a Faster R-CNN detector for 11 fruit categ
 - Model building and experimentation with transfer learning strategies
 - Evaluation using mAP, AR and mean IoU metrics
 
+## Project structure
+<a name="project-structure"></a>
+Top-level project tree and important files:
+
+```text
+CS231-Fruit-Detection-FasterRCNN/
+├── LICENSE
+├── README.md
+├── images/                      # dataset visuals and result plots
+├── dataset/                     # (not included) COCO-style dataset folders
+├── notebooks/
+│   ├── 01_data_preprocessing.ipynb
+│   ├── 02_data_visualization.ipynb
+│   └── 03_faster_rcnn_training.ipynb
+├── demo_streamlit/              # Streamlit demo app and model helpers
+│   ├── app.py
+│   └── requirements.txt
+└── (other project scripts and assets)
+
+Notes:
+- Put trained model files (large .pth) in `demo_streamlit/models/` or allow the demo to download them.
+- The `dataset/` directory is expected to contain `train/`, `validation/`, and `test/` subfolders following the COCO layout used by the notebooks.
+```
+
 ## Model architecture
 <a name="model-architecture"></a>
 We use Faster R-CNN with a ResNet-50 FPN backbone (two-stage detector).
@@ -83,6 +107,11 @@ dataset/
 
 The dataset used in this project was converted from YOLO format to COCO format for compatibility with `torchvision` utilities.
 
+<p align="center">
+  <img src="images/slide5.png" width="80%" alt="Dataset and prediction examples">
+  <br><i>Figure 2: Example results and sample images used in the project</i>
+</p>
+
 ## Training strategies
 <a name="training-strategies"></a>
 We experimented with three training strategies to measure transfer learning effects:
@@ -109,7 +138,7 @@ Common configuration:
   <img src="images/v1.png" width="32%" alt="Scratch Loss">
   <img src="images/v5.png" width="32%" alt="Backbone Loss">
   <img src="images/v2.png" width="32%" alt="Finetune Loss">
-  <br><i>Figure 2: Loss and mAP comparison for three strategies (V1, V5, V2)</i>
+  <br><i>Figure 3: Loss and mAP comparison for three strategies (V1, V5, V2)</i>
 </p>
 
 ## Demo
@@ -120,16 +149,21 @@ This repository now contains a Streamlit demo app that lets you load any of the 
 - Demo entrypoint: [demo_streamlit/app.py](demo_streamlit/app.py)
 - Demo dependencies: [demo_streamlit/requirements.txt](demo_streamlit/requirements.txt)
 
+<p align="center">
+  <img src="images/mukbang.png" width="80%" alt="Streamlit demo prediction example">
+  <br><i>Figure 4: Streamlit demo prediction example on a complex real-world scene</i>
+</p>
+
 Provided model links (Google Drive). You can either let the Streamlit app attempt to download them automatically (requires `gdown`), or download and place them under `demo_streamlit/models` with the filenames shown below.
 
 Model files and suggested filenames:
 
 - Train from Scratch — suggested filename: `model_scratch.pth`
-  - https://drive.google.com/file/d/1sEtlFPUAjM2UgbUL3imPw6tdHGrgq9AW/view?usp=sharing
+  - Download: [Download here](https://drive.google.com/file/d/1sEtlFPUAjM2UgbUL3imPw6tdHGrgq9AW/view?usp=sharing)
 - Backbone Pretrained — suggested filename: `model_backbone_pretrained.pth`
-  - https://drive.google.com/file/d/1_EX4m02uwZn7SQhNMLPUFqsOxStV1ZZI/view?usp=sharing
+  - Download: [Download here](https://drive.google.com/file/d/1_EX4m02uwZn7SQhNMLPUFqsOxStV1ZZI/view?usp=sharing)
 - Fine-tune Full Model — suggested filename: `model_finetune_full.pth`
-  - https://drive.google.com/file/d/1K2g9D4mpMKO_RICzXzTWCRAPbSNxi-rg/view?usp=sharing
+  - Download: [Download here](https://drive.google.com/file/d/1K2g9D4mpMKO_RICzXzTWCRAPbSNxi-rg/view?usp=sharing)
 
 Note: After I add these example filenames to the README, you said you'll rename your uploaded Drive files accordingly — that will make the demo's auto-download and the app easier to use.
 
